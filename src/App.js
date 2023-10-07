@@ -7,6 +7,7 @@ import NavBar from './components/NavBar.js';
 
 
 
+
 function App() {
   const [count, setCount] = useState(0);
 

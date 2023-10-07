@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import database from '../utils/database';
+// import database from '../utils/database';
 import { Link, useParams } from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
+import ItemCount from '../components/ItemCount/ItemCount.js';
+import { getOneProduct } from '../utils/database.js';
 
 
 const Detalle = () => {
   const params = useParams();
   const [producto, setProducto] = useState({});
-
   useEffect(() => {
-    const prod = database.find((prod) => prod.id === parseInt(params.id));
-    setProducto(prod);
+    
+    setProducto(getOneProduct(params.id));
   }, []);
 
   return (
@@ -29,9 +30,7 @@ const Detalle = () => {
             </p>
           </div>
           <div className="flex gap-4">
-            <button className="button is-success is-rounded is-fullwidth has-text-weight-bold">
-              Comprar ahora
-            </button>
+          <ItemCount stock={10} onAdd={(quantity) => console.log('Cantidad agregada' , quantity)} />
             <Link to="/">
               <button className="button is-danger is-rounded is-fullwidth has-text-weight-bold">
                 Volver

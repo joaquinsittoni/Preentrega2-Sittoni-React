@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CardProduct from './../components/CardProduct';
-import database from '../utils/database';
+import { getAllProducts } from '../utils/database';
 
 
 const Home = () => {
+
+    const  [database, setDatabase] =  useState([])
+        useEffect (()=>{
+            setDatabase(getAllProducts())
+        },[])  
+
+
 
     return (
         <div className='w-full h-screen bg-[#333] flex gap-4 flex-wrap p-4'>

@@ -1,4 +1,4 @@
-export default [
+const products = [
     {
         nombre: "Iphone 13",
         id: 0,
@@ -30,3 +30,12 @@ export default [
         imagen: 'https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12-spring21_lp_us_04202021.jpg.news_app_ed.jpg',
     }
 ]
+function getOneProduct(id){
+    return products.find((prod) => prod.id === parseInt(id));
+}
+function getAllProducts(){
+    return products
+}
+
+
+export { getAllProducts, getOneProduct}
