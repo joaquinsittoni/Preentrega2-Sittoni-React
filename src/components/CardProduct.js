@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 
 
@@ -8,14 +9,17 @@ const CardProduct = (props) => {
     const { nombre, precio, imagen, id } = props
 
     return (
-        <div className='w-1/5 h-96 border-4 border-white rounded-lg bg-red-200 p-2'>
+        <div class="cellCard">
             <Link to={'/product/' + id}>
-                <img src={imagen} alt="" className='w-full h-[80%] object-contain' />
+                <img src={imagen} alt="Producto" />
+                <div class="cardText">
+                    <p class="title is-4">{nombre}</p>
+                    <p class="subtitle is-6">${precio}</p>
+                </div>
             </Link>
-            <h2 className='text-lg font-semibold'>{nombre}</h2>
-            <p>Precio: <strong>{precio}</strong></p>
         </div>
     )
 }
 
 export default CardProduct
+

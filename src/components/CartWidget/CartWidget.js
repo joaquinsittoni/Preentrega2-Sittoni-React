@@ -1,14 +1,22 @@
-import React from 'react';
-import cart from './assets/cart.svg';
+import React, { useContext, useState } from 'react';
+import cartImg from './assets/cart.svg';
+import {CartContext} from '../context/CartContext';
+import {Link } from "react-router-dom";
 
 const CartWidget = () => {
+const {cart} = useContext (CartContext) 
+const totalQuantity = cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
     return (
         <div className="columns is-vcentered">
             <div className="column">
-                <img src={cart} alt="cart-widget" width="32" height="32" />
+                <Link to={"/cart"}>
+                <img src={cartImg} alt="cart-widget" width="32" height="32" />
+                </Link>
+
+            
             </div>
             <div className="column">
-                <span className="tag is-primary is-medium">0</span>
+                <span className="tag is-primary is-medium">{totalQuantity}</span>
             </div>
         </div>
     );
